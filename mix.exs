@@ -3,18 +3,32 @@ defmodule Exsom.Mixfile do
 
   def project do
     [app: :exsom,
-     version: "0.0.1",
-     elixir: "~> 1.2",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps]
-  end
+     name: "exsom",
 
-  def application do
-    [applications: [:logger]]
+     description: "A thin wrapper for the erlsom XML parsing library",
+     package: package,
+
+     version: "0.0.1",
+     elixir:  "~> 1.2",
+
+     source_url:   "https://github.com/metalabdesign/exsom",
+     homepage_url: "https://github/com/metalabdesign/exsom",
+
+     deps: deps,
+     docs: [logo: "./logo.png",
+            extras: ["README.md"]]]
   end
 
   defp deps do
-    [{:erlsom, "~> 1.4"}]
+    [{:earmark, "~> 0.1", only: :dev},
+     {:ex_doc, "~> 0.10", only: :dev},
+     {:erlsom, "~> 1.4"}]
+  end
+
+  defp package do
+    [maintainers: ["Brooklyn Zelenka", "Steven Vandevelde"],
+     licenses: ["LGPLv3"],
+     links: %{"GitHub" => "https://github.com/metalabdesign/exsom",
+              "Docs" => "http://metalabdesign.github.io/exsom/"}]
   end
 end
