@@ -19,7 +19,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   1. Add exsom to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:exsom, "~> 0.0.1"}]
+          [{:exsom, "~> 0.1.0"}]
         end
 
   2. Ensure exsom is started before your application:
