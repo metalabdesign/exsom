@@ -8,7 +8,7 @@ defmodule Exsom.Mixfile do
      description: "XML parser for Elixir (based on Erlsom)",
      package: package,
 
-     version: "0.1.0",
+     version: "0.1.1",
      elixir:  "~> 1.2",
 
      source_url:   "https://github.com/metalabdesign/exsom",
@@ -36,6 +36,6 @@ defmodule Exsom.Mixfile do
     [maintainers: ["Brooklyn Zelenka", "Steven Vandevelde"],
      licenses: ["LGPLv3"],
      links: %{"GitHub" => "https://github.com/metalabdesign/exsom",
-              "Docs" => "https://metalabdesign.github.io/exsom/"}]
+              "Docs" => "https://hexdocs.pm/exsom/"}]
   end
 end
