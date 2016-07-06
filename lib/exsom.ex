@@ -28,10 +28,9 @@ defmodule Exsom do
         received: Event # the SAX event that `erlsom` was processing when it ran into problems
       }
   """
-  @type scan_error :: %{:exception, :stack, :received}
-  @type scan_success :: {:ok, %Struct{}, [char]}
+  @type scan_error :: map # %{:exception, :stack, :received}
 
-  @spec scan(%Struct{}, Model, %{}) :: scan_success | {:error, scan_error}
+  @spec scan(struct, model :: any, list) :: {:ok, struct, [char]} | {:error, scan_error}
   def scan(xml, model, options \\ []), do: :erlsom.scan(xml, model, options)
 
   @doc ~S"""
@@ -46,15 +45,15 @@ defmodule Exsom do
 
   """
   @type write_option :: {:output, xml}
-  @spec write(%Struct{}, any, [write_option]) :: xml
+  @spec write(struct(), any, [write_option]) :: xml
   def write(struct, model, opts \\ []), do: :erlsom.write(struct, model, opts)
 
   @doc ~S"""
   Translate the XML document to a generic data structure based on n-tuples.
   """
 
-  @type simple_format_option :: {:nameFun, (a, b, c -> any)} | {:output_encoding, :utf8}
-  @type simple_format_element :: {tag, attributes, content}
+  @type simple_format_option :: {:nameFun, (any, any, any -> any)} | {:output_encoding, :utf8}
+  @type simple_format_element :: {tag :: any, attributes :: any, content :: any}
   @type rest :: [char] # Characters following the XML document
 
   @spec simple_format(raw_xml, [simple_format_option]) :: {:ok, simple_format_element, rest}

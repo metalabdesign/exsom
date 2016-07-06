@@ -4,6 +4,10 @@ Exsom is a thin wrapper around the [erlsom](https://github.com/willemdj/erlsom)
 XML parsing library. Much of the documentation has been taken from the `erlsom`
 documentation, as they are obviously equivalent.
 
+## Early Release
+Please note that it is *very early days* for this library, and changes may occur
+frequently. Do not expect anything to be bug-free at this stage.
+
 ## Changes from `erlsom`
 
 Many functions have been renamed and/or broken into modules.

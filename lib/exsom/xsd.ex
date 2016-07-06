@@ -5,7 +5,7 @@ defmodule Exsom.XSD do
 
   @doc ~S"""
   """
-  @spec compile(xml, []) :: any
+  @spec compile(xml :: any, []) :: any
   def compile(xsd, opts \\ []), do: :erlsom.compile_xsd(xsd, opts)
 
   @doc ~S"""

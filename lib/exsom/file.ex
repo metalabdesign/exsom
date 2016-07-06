@@ -6,9 +6,8 @@ defmodule Exsom.File do
   @doc ~S"""
   The same as 'Exsom.scan', but reads directly from a file
   """
-  @type scan_error :: %{:exception, :stack, :received}
-  @type scan_success :: {:ok, %Struct{}, [char]}
+  @type scan_error :: map # %{:exception, :stack, :received}
 
-  @spec scan([char], %{}) :: scan_success | {:error, scan_error}
+  @spec scan([char], %{}) :: {:ok, struct, [char]} | {:error, scan_error}
   def scan(xml_file, model), do: :erlsom.scan_file(xml_file, model)
 end
