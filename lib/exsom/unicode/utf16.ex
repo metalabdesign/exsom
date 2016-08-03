@@ -1,5 +1,6 @@
 defmodule Exsom.Unicode.UTF16 do
   @moduledoc ~S"""
+  UTF16 encoding.
   """
 
   @doc ~S"""

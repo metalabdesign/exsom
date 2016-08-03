@@ -28,7 +28,7 @@ defmodule Exsom.Mixfile do
 
   defp deps do
     [{:earmark, "~> 0.1", only: :dev},
-     {:erlsom, "~> 1.4"},
+     {:erlsom, git: "https://github.com/willemdj/erlsom.git", ref: "9b3f9106a9b1376ab7a4dbdd11cae7bb9835ef0a"},
      {:ex_doc, "~> 0.10", only: :dev}]
   end
 
