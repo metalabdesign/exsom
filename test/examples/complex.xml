@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <xsd:element name="foo" type="foo_type"/>
-    <xsd:complexType name="foo_type">
-         <xsd:sequence>
-             <xsd:element name="bar" type="xsd:string"
-             maxOccurs="unbounded"/>
-         </xsd:sequence>
-         <xsd:attribute name="attr" type="xsd:string"/>
-     </xsd:complexType>
-</xsd:schema>
+<foo attr="yo">
+  <bar>1</bar>
+</foo>

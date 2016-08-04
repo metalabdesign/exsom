@@ -1,13 +1,15 @@
 defmodule Exsom.XSD.File do
   @moduledoc ~S"""
+  Functions for handling XSD files.
   """
 
   @type opts :: map()
 
   @doc ~S"""
+  Parses a XSD file and compiles it into a `Exsom.model`.
   """
-  @spec compile(xsd :: any, opts) :: any
-  def compile(xsd, opts \\ []), do: :erlsom.compile_xsd_file(xsd, opts)
+  @spec compile(path :: Exsom.relative_path, opts) :: {atom, Exsom.model}
+  def compile(path, opts \\ []), do: :erlsom.compile_xsd_file(path, opts)
 
   @doc ~S"""
   """
