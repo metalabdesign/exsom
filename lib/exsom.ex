@@ -60,17 +60,17 @@ defmodule Exsom do
         received: Event         # the SAX event that `erlsom` was processing when it ran into problems
       }
   """
-  @type scan_error      :: map # %{:exception, :stack, :received}
-  @type scan_failure    :: {:error, scan_error}
-  @type scan_success    :: {:ok, Exsom.instance, Exsom.rest}
+  @type parse_error      :: map # %{:exception, :stack, :received}
+  @type parse_failure    :: {:error, parse_error}
+  @type parse_success    :: {:ok, Exsom.instance, Exsom.rest}
 
-  @spec scan(
+  @spec parse(
     xml     :: Exsom.xml,
     model   :: Exsom.model,
     opts    :: list
-  ) :: Exsom.scan_success
-     | Exsom.scan_failure
-  def scan(xml, model, opts \\ []), do: :erlsom.scan(xml, model, opts)
+  ) :: Exsom.parse_success
+     | Exsom.parse_failure
+  def parse(xml, model, opts \\ []), do: :erlsom.scan(xml, model, opts)
 
 
   @doc ~S"""
@@ -84,14 +84,12 @@ defmodule Exsom do
   | `:binary`   | UTF-8 encoded binary                                        |
 
   """
-  @type write_option :: {:output, atom}
-
-  @spec write(
+  @spec compose(
     struct  :: Exsom.instance,
     model   :: Exsom.model,
-    opts    :: [write_option]
+    opts    :: [{:output, atom}]
   ) :: {atom, Exsom.xml}
-  def write(struct, model, opts \\ []) do
+  def compose(struct, model, opts \\ []) do
     # a list in erlsom is actually a charlist
     # so: charlist -> list
     opts = Enum.map opts, fn(opt) ->

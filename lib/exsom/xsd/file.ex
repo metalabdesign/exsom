@@ -3,21 +3,27 @@ defmodule Exsom.XSD.File do
   Functions for handling XSD files.
   """
 
-  @type opts :: map()
-
   @doc ~S"""
   Parses a XSD file and compiles it into a `Exsom.model`.
   """
-  @spec compile(path :: Exsom.relative_path, opts) :: {atom, Exsom.model}
-  def compile(path, opts \\ []), do: :erlsom.compile_xsd_file(path, opts)
+  @spec parse(
+    path  :: Exsom.relative_path,
+    opts  :: list
+  ) :: {atom, Exsom.model}
+  def parse(path, opts \\ []) do
+    :erlsom.compile_xsd_file(path, opts)
+  end
 
   @doc ~S"""
+  Parses a XSD file, compiles it into a `Exsom.model`
+  and then merges that with an existing model.
   """
-  @spec add(file :: any, opts) :: any
-  def add(file, opts \\ []), do: :erlsom.add_xml_file(file, opts)
-
-  @doc ~S"""
-  """
-  @spec write(xsd :: any, out :: any, opts) :: any
-  def write(xsd, output, opts), do: :erlsom.write_hrl_file(xsd, output, opts)
+  @spec merge(
+    path    :: Exsom.relative_path,
+    model   :: Exsom.model,
+    opts    :: list
+  ) :: {:ok, Exsom.model} | {:error, any}
+  def merge(path, model, opts \\ []) do
+    :erlsom.add_xsd_file(path, model, opts)
+  end
 end
