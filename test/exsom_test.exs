@@ -39,4 +39,14 @@ defmodule ExsomTest do
     charlist_xml = Exsom.Unicode.convert(@test_xml)
     assert charlist_xml == to_charlist(@test_xml)
   end
+
+  test "xsd / model utilities" do
+    { :ok, model } = Exsom.XSD.File.compile("test/examples/complex.xsd")
+
+    a = Exsom.XSD.Model.add_xml_schema(model)
+    b = Exsom.XSD.Model.merge(model, :erlsom_parseXsd.xsdModel())
+
+    assert a == b
+  end
+
 end
