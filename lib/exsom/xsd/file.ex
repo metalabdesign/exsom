@@ -24,6 +24,6 @@ defmodule Exsom.XSD.File do
     opts    :: list
   ) :: {:ok, Exsom.model} | {:error, any}
   def merge(path, model, opts \\ []) do
-    :erlsom.add_xsd_file(path, model, opts)
+    :erlsom.add_xsd_file(path, opts, model)
   end
 end
