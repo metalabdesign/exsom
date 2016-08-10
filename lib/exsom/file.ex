@@ -7,11 +7,10 @@ defmodule Exsom.File do
   Parses a XML file, that conforms to a given XSD schema,
   into an internal representation of a XML document (ie. `Exsom.instance`).
   """
-
-  @spec scan(
+  @spec parse(
     path    :: Exsom.relative_path,
     model   :: Exsom.model
-  ) :: Exsom.scan_result
-     | Exsom.scan_error
-  def scan(path, model), do: :erlsom.scan_file(path, model)
+  ) :: Exsom.parse_result
+     | Exsom.parse_error
+  def parse(path, model), do: :erlsom.scan_file(path, model)
 end
