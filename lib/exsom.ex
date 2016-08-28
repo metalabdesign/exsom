@@ -109,7 +109,15 @@ defmodule Exsom do
   """
   @type simple_format_option    :: {:nameFun, (any, any, any -> any)} | {:output_encoding, :utf8}
   @type simple_format_element   :: {tag :: any, attributes :: any, content :: any}
+  @type simple_format_ok        :: {:ok, simple_format_element, rest}
 
-  @spec simple_format(raw_xml, [simple_format_option]) :: {:ok, simple_format_element, rest}
-  def simple_format(xml, opts \\ []), do: :erlsom.simple_form(xml, opts)
+  @spec simple_format(raw_xml, [simple_format_option]) :: simple_format_ok | {:error, String.t}
+  def simple_format(xml, opts \\ []) do
+    try do
+      :erlsom.simple_form(xml, opts)
+    catch
+      {:error, reason} -> {:error, "Failed to parse to simple format XML: #{reason}"}
+      _ -> {:error, "Failed to parse to simple format XML"}
+    end
+  end
 end
